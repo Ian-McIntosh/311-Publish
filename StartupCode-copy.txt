@@ -1,0 +1,40 @@
+sudo rm -r /anaconda/pkgs/traitlets-5.0.5-py_0/
+sudo rm -r /anaconda/pkgs/decorator-4.4.2-py_0/
+conda env create -f environment.yml
+conda activate gdal
+
+python -m ipykernel install --user --name gdal  --display-name "GDAL"
+
+pip install seaborn
+sudo mkdir /mnt/corral-sync
+if [ ! -d "/etc/smbcredentials" ]; then
+sudo mkdir /etc/smbcredentials
+fi
+if [ ! -f "/etc/smbcredentials/tdiscorral.cred" ]; then
+    sudo bash -c 'echo "username=tdiscorral" >> /etc/smbcredentials/tdiscorral.cred'
+    sudo bash -c 'echo "password=2/4N4Y4PhBliAxvqhs74n8Y684gPiRsBZH27NKSLYmZYRPGCxlGr9XljNzLbQ8xJP2MOtXzt2Mtn/HseXwLObw==" >> /etc/smbcredentials/tdiscorral.cred'
+fi
+sudo chmod 600 /etc/smbcredentials/tdiscorral.cred
+
+sudo bash -c 'echo "//tdiscorral.file.core.windows.net/corral-sync /mnt/corral-sync cifs nofail,vers=3.0,credentials=/etc/smbcredentials/tdiscorral.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+sudo mount -t cifs //tdiscorral.file.core.windows.net/corral-sync /mnt/corral-sync -o vers=3.0,credentials=/etc/smbcredentials/tdiscorral.cred,dir_mode=0777,file_mode=0777,serverino
+
+
+
+
+
+sudo mkdir /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6
+if [ ! -d "/etc/smbcredentials" ]; then
+sudo mkdir /etc/smbcredentials
+fi
+if [ ! -f "/etc/smbcredentials/damageplainenv0976495346.cred" ]; then
+    sudo bash -c 'echo "username=damageplainenv0976495346" >> /etc/smbcredentials/damageplainenv0976495346.cred'
+    sudo bash -c 'echo "password=PJGr7Rlu8W/SX81N3kFxPp0nQ9kAGwGCoHBRnCAa1fu0UepJbIYEQOm0n0hSaI8U7MT8hgLGHK129cMNKgBdiA==" >> /etc/smbcredentials/damageplainenv0976495346.cred'
+fi
+sudo chmod 600 /etc/smbcredentials/damageplainenv0976495346.cred
+
+sudo bash -c 'echo "//damageplainenv0976495346.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 cifs nofail,vers=3.0,credentials=/etc/smbcredentials/damageplainenv0976495346.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+sudo mount -t cifs //damageplainenv0976495346.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 -o vers=3.0,credentials=/etc/smbcredentials/damageplainenv0976495346.cred,dir_mode=0777,file_mode=0777,serverino
+
+
+bash wct-4.6.1/wct-export.sh "311-Publish/GRIB2_Files2/" "311-Publish/Exported_Tif_Files/" tif  "311-Publish/wctBatchConfig-copy.xml"
