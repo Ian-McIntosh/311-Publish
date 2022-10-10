@@ -1,3 +1,14 @@
+## Repository Overview
+
+Through our work at the Texas Advanced Computing Center (TACC) over the past two years, we have learned ways to use computer science, artificial intelligence (AI) and machine learning to improve the lives of others on a large scale. Flooding in Austin has led to families paying large amounts to repair damages or even losing their houses, and we are exploring how data science and AI approaches may improve mitigation measures to protect people and their homes. In this repository, we are tracking 311 flooding calls in the Austin area. By examining the amount of precipitation leading up to the call, we predict 311 flooding calls throughout the city based on projected precipitation. This allows residents and city officials to be prepared for potential flooding and alleviate damages before they happen. 
+
+The scripts should be run in this order:
+-[311.ipynb](311.ipynb)
+-[Layers.ipynb](Layers.ipynb)
+-[Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb)
+-[VRTs-copy.ipynb](VRTs-copy.ipynb)
+-[HazardEstimates.ipynb](HazardEstimates.ipynb)
+
 ## Scraping 311 call data from datbase and rainfall data from tracking sites.
 
 In order to create the Flooding.csv file, visit [Austin 311](https://data.austintexas.gov/Utilities-and-City-Services/Austin-311-Public-Data/xwdj-i9he/ ) and select view data. Once there, type 'Flooding' into the search bar. This will give you all of the 311 calls relating to flooding. Hit export to download the file onto your computer and select CSV as the file type. Once you have the file on your computer you can import it into your preferred environment and folder.
@@ -43,7 +54,7 @@ Next, open the [Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb) file. Ru
 
 ## Get VRTs necessary to create model
 
-Next, you will have to run through the [VRTs-copy.ipynb](Layers.ipynb) file. Before you can do this, you must create a folder called VRTs inside your desired folder. This should conclude with the creation of the VRTs in the VRT Folder.
+Next, you will have to run through the [VRTs-copy.ipynb](VRTs-copy.ipynb) file. Before you can do this, you must create a folder called VRTs inside your desired folder. This should conclude with the creation of the VRTs in the VRT Folder.
 
 ## Finally, create and save your model and check results
 
