@@ -33,37 +33,57 @@ Once you have all of these files and folders, you should be able to run through 
 
 ## Get non-flooded datset by scraping the background structures in the region
 
-Now, you can move on to the Layers.ipynb file. To run this file you will need the Texas.geojson file. To download this file, go to 'https://github.com/microsoft/USBuildingFootprints' and click on Texas. This will download a zip file from which you can pull the geojson file to import it into your desired environment and folder. You will also need the wbdhu12_a_us_september2020-copy.gdb folder. To get this folder, go to this link: https://www.sciencebase.gov/catalog/item/61f8b8edd34e622189c3293f and follow instructions to get the data. 
+Now, you can move on to the Layers.ipynb file. To run this file you will need the Texas.geojson [file](https://github.com/microsoft/USBuildingFootprints). Click on Texas, this will download a zip file from which you can pull the geojson file to import it into your desired environment and folder. You will also need the wbdhu12_a_us_september2020-copy.gdb [folder](https://www.sciencebase.gov/catalog/item/61f8b8edd34e622189c3293f). Follow instructions to get the data. 
 
-Once you have these two things, you can run through the cells in the Layers.ipynb file. This file should conclude with the creation of the background_locations.csv file.
+Once you have these two things, you can run through the cells in the [Layers.ipynb](Layers.ipynb) file. This file should conclude with the creation of the background_locations.csv file.
 
-Get GRIB2 files necessary to set up model 
+## Get GRIB2 files necessary to set up model 
 
-    Next, open the Rainfall_Scrape-copy.ipynb file. Run through the code cells in this file. This should conclude with the creation of the GRIB2 files, as well as the creation of an hours.txt file.
+    Next, open the [Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb) file. Run through the code cells in this file. This should conclude with the creation of the GRIB2 files, as well as the creation of an hours.txt file.
 
-Get VRTs necessary to create model
+## Get VRTs necessary to create model
 
-Next, you will have to run through the VRTs-copy.ipynb file. Before you can do this, you must create a folder called VRTs inside your desired folder. This should conclude with the creation of the VRTs in the VRT Folder.
+Next, you will have to run through the [VRTs-copy.ipynb](Layers.ipynb) file. Before you can do this, you must create a folder called VRTs inside your desired folder. This should conclude with the creation of the VRTs in the VRT Folder.
 
-Finally, create and save your model and check results
+## Finally, create and save your model and check results
 
-There is one last ipynb file to run through. However, before we can do that, you have to copy lines 8-37 from the StartupCode-copy.txt file and paste them into the terminal. After that, you must convert the GRIB2 files to tif files. Before you can do so, you must create a folder named Exported_Tif_Files. You also have to download the wct-4.6.1-copy folder. To do so, go to this link https://www.ncdc.noaa.gov/wct/install.php and download the correct zip given your environment. Unzip the file to create the folder. Pull the wctBacthConfig-copy.xml out of the folder. Once you have done that, run the final line of the StartupCode-copy.txt file in the terminal. Finally, create another folder named 'reproject' inside of the Exported_Tif_Files. 
+There is one last ipynb file to run through. However, before we can do that, you have to go back to the terminal and copy and paste the following lines 8-37. 
 
-Once you have done all this you can run the cells in thr HazardEstimates.ipynb. This should end with the creation and saving of your model.
-Get non-flooded datset by scraping the background structures in the region
+```
+pip install seaborn
+sudo mkdir /mnt/corral-sync
+if [ ! -d "/etc/smbcredentials" ]; then
+sudo mkdir /etc/smbcredentials
+fi
+if [ ! -f "/etc/smbcredentials/tdiscorral.cred" ]; then
+    sudo bash -c 'echo "username=tdiscorral" >> /etc/smbcredentials/tdiscorral.cred'
+    sudo bash -c 'echo "password=2/4N4Y4PhBliAxvqhs74n8Y684gPiRsBZH27NKSLYmZYRPGCxlGr9XljNzLbQ8xJP2MOtXzt2Mtn/HseXwLObw==" >> /etc/smbcredentials/tdiscorral.cred'
+fi
+sudo chmod 600 /etc/smbcredentials/tdiscorral.cred
 
-    Now, you can move on to the Layers.ipynb file. To run this file you will need the Texas.geojson file. To download this file, go to 'https://github.com/microsoft/USBuildingFootprints' and click on Texas. This will download a zip file from which you can pull the geojson file to import it into your desired environment and folder. You will also need the wbdhu12_a_us_september2020-copy.gdb folder. To get this folder, go to this link: https://www.sciencebase.gov/catalog/item/61f8b8edd34e622189c3293f and follow instructions to get the data. 
-    Once you have these two things, you can run through the cells in the Layers.ipynb file. This file should conclude with the creation of the background_locations.csv file.
+sudo bash -c 'echo "//tdiscorral.file.core.windows.net/corral-sync /mnt/corral-sync cifs nofail,vers=3.0,credentials=/etc/smbcredentials/tdiscorral.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+sudo mount -t cifs //tdiscorral.file.core.windows.net/corral-sync /mnt/corral-sync -o vers=3.0,credentials=/etc/smbcredentials/tdiscorral.cred,dir_mode=0777,file_mode=0777,serverino
 
-Get GRIB2 files necessary to set up model 
+sudo mkdir /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6
+if [ ! -d "/etc/smbcredentials" ]; then
+sudo mkdir /etc/smbcredentials
+fi
+if [ ! -f "/etc/smbcredentials/damageplainenv0976495346.cred" ]; then
+    sudo bash -c 'echo "username=damageplainenv0976495346" >> /etc/smbcredentials/damageplainenv0976495346.cred'
+    sudo bash -c 'echo "password=PJGr7Rlu8W/SX81N3kFxPp0nQ9kAGwGCoHBRnCAa1fu0UepJbIYEQOm0n0hSaI8U7MT8hgLGHK129cMNKgBdiA==" >> /etc/smbcredentials/damageplainenv0976495346.cred'
+fi
+sudo chmod 600 /etc/smbcredentials/damageplainenv0976495346.cred
 
-    Next, open the Rainfall_Scrape-copy.ipynb file. Run through the code cells in this file. This should conclude with the creation of the GRIB2 files, as well as the creation of an hours.txt file.
+sudo bash -c 'echo "//damageplainenv0976495346.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 cifs nofail,vers=3.0,credentials=/etc/smbcredentials/damageplainenv0976495346.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+sudo mount -t cifs //damageplainenv0976495346.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 -o vers=3.0,credentials=/etc/smbcredentials/damageplainenv0976495346.cred,dir_mode=0777,file_mode=0777,serverino
+```
 
-Get VRTs necessary to create model
+After that, you must convert the GRIB2 files to tif files. Before you can do so, you must create a folder named Exported_Tif_Files. You also have to download the wct-4.6.1-copy [folder](https://www.ncdc.noaa.gov/wct/install.php). Download the correct zip given your environment. Unzip the file to create the folder. Pull the [wctBacthConfig-copy.xml](wctBacthConfig-copy.xml) out of the folder. Once you have done that, go back to the terminal and run the following line:
 
-    Next, you will have to run through the VRTs-copy.ipynb file. Before you can do this, you must create a folder called VRTs inside your desired folder. This should conclude with the creation of the VRTs in the VRT Folder.
+```
+bash wct-4.6.1/wct-export.sh "311-Publish/GRIB2_Files2/" "311-Publish/Exported_Tif_Files/" tif  "311-Publish/wctBatchConfig-copy.xml"
+```
 
-Finally, create and save your model and check results
+Finally, create another folder named 'reproject' inside of the Exported_Tif_Files. 
 
-    There is one last ipynb file to run through. However, before we can do that, you have to copy lines 8-37 from the StartupCode-copy.txt file and paste them into the terminal. After that, you must convert the GRIB2 files to tif files. Before you can do so, you must create a folder named Exported_Tif_Files. You also have to download the wct-4.6.1-copy folder. To do so, go to this link https://www.ncdc.noaa.gov/wct/install.php and download the correct zip given your environment. Unzip the file to create the folder. Pull the wctBacthConfig-copy.xml out of the folder. Once you have done that, run the final line of the StartupCode-copy.txt file in the terminal. Finally, create another folder named 'reproject' inside of the Exported_Tif_Files. 
-    Once you have done all this you can run the cells in thr HazardEstimates.ipynb. This should end with the creation and saving of your model.
+Once you have done all this you can run the cells in the [HazardEstimates.ipynb](HazardEstimates.ipynb). This should end with the creation and saving of your model.
