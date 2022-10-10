@@ -63,19 +63,6 @@ sudo chmod 600 /etc/smbcredentials/tdiscorral.cred
 
 sudo bash -c 'echo "//tdiscorral.file.core.windows.net/corral-sync /mnt/corral-sync cifs nofail,vers=3.0,credentials=/etc/smbcredentials/tdiscorral.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
 sudo mount -t cifs //tdiscorral.file.core.windows.net/corral-sync /mnt/corral-sync -o vers=3.0,credentials=/etc/smbcredentials/tdiscorral.cred,dir_mode=0777,file_mode=0777,serverino
-
-sudo mkdir /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6
-if [ ! -d "/etc/smbcredentials" ]; then
-sudo mkdir /etc/smbcredentials
-fi
-if [ ! -f "/etc/smbcredentials/damageplainenv0976495346.cred" ]; then
-    sudo bash -c 'echo "username=damageplainenv0976495346" >> /etc/smbcredentials/damageplainenv0976495346.cred'
-    sudo bash -c 'echo "password=PJGr7Rlu8W/SX81N3kFxPp0nQ9kAGwGCoHBRnCAa1fu0UepJbIYEQOm0n0hSaI8U7MT8hgLGHK129cMNKgBdiA==" >> /etc/smbcredentials/damageplainenv0976495346.cred'
-fi
-sudo chmod 600 /etc/smbcredentials/damageplainenv0976495346.cred
-
-sudo bash -c 'echo "//damageplainenv0976495346.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 cifs nofail,vers=3.0,credentials=/etc/smbcredentials/damageplainenv0976495346.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
-sudo mount -t cifs //damageplainenv0976495346.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 /mnt/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 -o vers=3.0,credentials=/etc/smbcredentials/damageplainenv0976495346.cred,dir_mode=0777,file_mode=0777,serverino
 ```
 
 After that, you must convert the GRIB2 files to tif files. Before you can do so, you must create a folder named Exported_Tif_Files. You also have to download the wct-4.6.1-copy [folder](https://www.ncdc.noaa.gov/wct/install.php). Download the correct zip given your environment. Unzip the file to create the folder. Pull the [wctBacthConfig-copy.xml](wctBacthConfig-copy.xml) out of the folder. Once you have done that, go back to the terminal and run the following line:
