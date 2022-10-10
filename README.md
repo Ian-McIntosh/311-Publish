@@ -39,7 +39,7 @@ Once you have these two things, you can run through the cells in the [Layers.ipy
 
 ## Get GRIB2 files necessary to set up model 
 
-    Next, open the [Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb) file. Run through the code cells in this file. This should conclude with the creation of the GRIB2 files, as well as the creation of an hours.txt file.
+Next, open the [Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb) file. Run through the code cells in this file. This should conclude with the creation of the GRIB2 files, as well as the creation of an hours.txt file.
 
 ## Get VRTs necessary to create model
 
