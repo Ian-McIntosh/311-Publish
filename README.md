@@ -3,11 +3,11 @@
 Through our work at the Texas Advanced Computing Center (TACC) over the past two years, we have learned ways to use computer science, artificial intelligence (AI) and machine learning to improve the lives of others on a large scale. Flooding in Austin has led to families paying large amounts to repair damages or even losing their houses, and we are exploring how data science and AI approaches may improve mitigation measures to protect people and their homes. In this repository, we are tracking 311 flooding calls in the Austin area. By examining the amount of precipitation leading up to the call, we predict 311 flooding calls throughout the city based on projected precipitation. This allows residents and city officials to be prepared for potential flooding and alleviate damages before they happen. 
 
 The scripts should be run in this order:
--[311.ipynb](311.ipynb)
--[Layers.ipynb](Layers.ipynb)
--[Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb)
--[VRTs-copy.ipynb](VRTs-copy.ipynb)
--[HazardEstimates.ipynb](HazardEstimates.ipynb)
+- [311.ipynb](311.ipynb)
+- [Layers.ipynb](Layers.ipynb)
+- [Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb)
+- [VRTs-copy.ipynb](VRTs-copy.ipynb)
+- [HazardEstimates.ipynb](HazardEstimates.ipynb)
 
 ## Scraping 311 call data from datbase and rainfall data from tracking sites.
 
