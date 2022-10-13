@@ -3,11 +3,11 @@
 Through our work at the Texas Advanced Computing Center (TACC) over the past two years, we have learned ways to use computer science, artificial intelligence (AI) and machine learning to improve the lives of others on a large scale. Flooding in Austin has led to families paying large amounts to repair damages or even losing their houses, and we are exploring how data science and AI approaches may improve mitigation measures to protect people and their homes. In this repository, we are tracking 311 flooding calls in the Austin area. By examining the amount of precipitation leading up to the call, we predict 311 flooding calls throughout the city based on projected precipitation. This allows residents and city officials to be prepared for potential flooding and alleviate damages before they happen. 
 
 The scripts should be run in this order:
-- [311.ipynb](311.ipynb)
-- [Layers.ipynb](Layers.ipynb)
+- [311-Data-Cleaning.ipynb](311-Data-Cleaning.ipynb)
+- [Background-Layers.ipynb](Background-Layers.ipynb)
 - [Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb)
-- [VRTs-copy.ipynb](VRTs-copy.ipynb)
-- [HazardEstimates.ipynb](HazardEstimates.ipynb)
+- [VRTs-Creation.ipynb](VRTs-Creation.ipynb)
+- [Model-Creation.ipynb](Model-Creation.ipynb)
 
 ## Scraping 311 call data from datbase and rainfall data from tracking sites.
 
@@ -25,13 +25,13 @@ gdal  --display-name "GDAL"
 
 You will need to have the environment.yml file for this code to work in the terminal. Then, open up the 311.ipynb file and click on the drop down menu in the top right corner. Select GDAL from the list. 
 
-From here, you can start running through the code cells in the 311.ipynb file. To do so, make sure you have the KATT, KAUS and KEDC [data](https://www.texmesonet.org/DataProducts/CustomDownloads).  From there type in the code for the station from which are pulling data. Next put in your start date and end date.  
+From here, you can start running through the code cells in the 311-Data-Cleaning.ipynb file. To do so, make sure you have the KATT, KAUS and KEDC [data](https://www.texmesonet.org/DataProducts/CustomDownloads).  From there type in the code for the station from which are pulling data. Next put in your start date and end date.  
 - Start Date: 1/1/2014 
 - End Date: 8/5/2021
 *Note that you can only download one year at a time so you will have to download multiple CSVs*.
 
 Once you have the name of the station and the dates in, click on Get Data. This will give you a CSV that you can import into your preferred environment and folder.
-To run the [311.ipynb](311.ipynb) file, you will also need the [data](https://data.austintexas.gov/Locations-and-Maps/BOUNDARIES_jurisdictions/3pzb-6mbr) in the Austin folder. 
+To run the [311-Data-Cleaning.ipynb](311-Data-Cleaning.ipynb) file, you will also need the [data](https://data.austintexas.gov/Locations-and-Maps/BOUNDARIES_jurisdictions/3pzb-6mbr) in the Austin folder. 
 
 Select :
 	`export -> shapefile `
@@ -44,9 +44,9 @@ Once you have all of these files and folders, you should be able to run through 
 
 ## Get non-flooded datset by scraping the background structures in the region
 
-Now, you can move on to the Layers.ipynb file. To run this file you will need the Texas.geojson [file](https://github.com/microsoft/USBuildingFootprints). Click on Texas, this will download a zip file from which you can pull the geojson file to import it into your desired environment and folder. You will also need the wbdhu12_a_us_september2020-copy.gdb [folder](https://www.sciencebase.gov/catalog/item/61f8b8edd34e622189c3293f). Follow instructions to get the data. 
+Now, you can move on to the Background-Layers.ipynb file. To run this file you will need the Texas.geojson [file](https://github.com/microsoft/USBuildingFootprints). Click on Texas, this will download a zip file from which you can pull the geojson file to import it into your desired environment and folder. You will also need the wbdhu12_a_us_september2020-copy.gdb [folder](https://www.sciencebase.gov/catalog/item/61f8b8edd34e622189c3293f). Follow instructions to get the data. 
 
-Once you have these two things, you can run through the cells in the [Layers.ipynb](Layers.ipynb) file. This file should conclude with the creation of the background_locations.csv file.
+Once you have these two things, you can run through the cells in the [Background-Layers.ipynb](Background-Layers.ipynb) file. This file should conclude with the creation of the background_locations.csv file.
 
 ## Get GRIB2 files necessary to set up model 
 
@@ -54,7 +54,7 @@ Next, open the [Rainfall_Scrape-copy.ipynb](Rainfall_Scrape-copy.ipynb) file. Ru
 
 ## Get VRTs necessary to create model
 
-Next, you will have to run through the [VRTs-copy.ipynb](VRTs-copy.ipynb) file. Before you can do this, you must create a folder called VRTs inside your desired folder. This should conclude with the creation of the VRTs in the VRT Folder.
+Next, you will have to run through the [VRTs-Creation.ipynb](VRTs-Creation.ipynb) file. Before you can do this, you must create a folder called VRTs inside your desired folder. This should conclude with the creation of the VRTs in the VRT Folder.
 
 ## Finally, create and save your model and check results
 
@@ -84,4 +84,4 @@ bash wct-4.6.1/wct-export.sh "311-Publish/GRIB2_Files2/" "311-Publish/Exported_T
 
 Finally, create another folder named 'reproject' inside of the Exported_Tif_Files. 
 
-Once you have done all this you can run the cells in the [HazardEstimates.ipynb](HazardEstimates.ipynb). This should end with the creation and saving of your model.
+Once you have done all this you can run the cells in the [Model-Creation.ipynb](Model-Creation.ipynb). This should end with the creation and saving of your model.
